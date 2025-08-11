@@ -86,7 +86,7 @@ body {
 
 .header__profile-image {
     width: 366px;
-    height: 366px;
+    height: 432px;
     border-radius: 24px;
     background-image: url('../assets/images/profileImage.png');
     background-size: cover;
@@ -407,7 +407,7 @@ body {
     
     .header__profile-image {
         width: 200px;
-        height: 200px;
+        height: 236px;
     }
     
     .projects,
@@ -434,7 +434,7 @@ body {
     
     .header__profile-image {
         width: 150px;
-        height: 150px;
+        height: 177px;
     }
     
     .header__title {
