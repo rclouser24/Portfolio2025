@@ -55,17 +55,38 @@ body {
 
 /* Header Styles */
 .header {
-    padding: 4rem 0 6rem 0;
+    padding: 4rem 0 120px 0;
     text-align: center;
 }
 
 .header__name-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    gap: 3rem;
     width: 100%;
+}
+
+.header__profile-image-container {
+    flex-shrink: 0;
+}
+
+.header__profile-image {
+    width: 366px;
+    height: 366px;
+    border-radius: 24px;
+    background-image: url('../assets/images/profileImage.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header__title-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .header__name {
@@ -73,40 +94,8 @@ body {
     font-weight: 600;
     color: #121aff;
     line-height: 0.8;
-    margin-bottom: 0.75rem;
-    text-align: center;
-}
-
-.header__name--first {
-    margin-bottom: 0.25rem;
-}
-
-.header__name--letters {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25rem;
-}
-
-.header__name--letter {
-    font-size: 10rem;
-    font-weight: 600;
-    color: #121aff;
-    line-height: 0.8;
-}
-
-.header__profile-image {
-    position: absolute;
-    top: -3rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8.5rem;
-    height: 8.5rem;
-    border-radius: 6.9rem;
-    background-image: url('../assets/images/profileImage.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    margin: 0;
+    text-align: left;
 }
 
 .header__title-container {
@@ -393,17 +382,19 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .header__name,
-    .header__name--letter {
+    .header__name-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .header__name {
         font-size: 6rem;
+        text-align: center;
     }
     
     .header__profile-image {
-        width: 6rem;
-        height: 6rem;
-        top: -2rem;
-        left: 50%;
-        transform: translateX(-50%);
+        width: 200px;
+        height: 200px;
     }
     
     .projects,
@@ -424,9 +415,13 @@ body {
 }
 
 @media (max-width: 480px) {
-    .header__name,
-    .header__name--letter {
+    .header__name {
         font-size: 4rem;
+    }
+    
+    .header__profile-image {
+        width: 150px;
+        height: 150px;
     }
     
     .header__title {
