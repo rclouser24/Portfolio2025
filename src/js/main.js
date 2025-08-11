@@ -80,8 +80,7 @@ class ThreeJSScene {
     const shapeTypes = [
       { type: "cube", count: 3, model: "assets/3d/GLTF/Cubic.gltf" }, // 20% - 3 shapes
       { type: "ball", count: 3, model: "assets/3d/GLTF/Ball.gltf" }, // 20% - 3 shapes
-      { type: "sphere", count: 3, model: "assets/3d/GLTF/Hexagon.gltf" }, // 20% - 3 shapes
-      { type: "spiral", count: 8, model: "assets/3d/GLTF/Twist.gltf" }, // 40% - 8 shapes (3 original + 5 new)
+      { type: "spiral", count: 11, model: "assets/3d/GLTF/Twist.gltf" }, // 55% - 11 shapes (3 original + 8 from hexagons)
     ];
 
     const totalShapes = 20;
@@ -192,28 +191,25 @@ class ThreeJSScene {
   }
 
   createFallbackShapes() {
-    // Create 20 shapes with variety: 3 cubes, 3 balls, 3 spheres, 8 spirals (increased by 110%)
+    console.log("Creating fallback shapes...");
+
+    // Define fallback shape types with their distribution
     const shapeTypes = [
       {
         type: "cube",
         count: 3,
         geometry: new THREE.BoxGeometry(5.46, 5.46, 5.46),
-      },
+      }, // 2.6 * 2.1
       {
         type: "ball",
         count: 3,
         geometry: new THREE.SphereGeometry(2.73, 16, 16),
-      },
-      {
-        type: "sphere",
-        count: 3,
-        geometry: new THREE.SphereGeometry(2.73, 8, 6),
-      },
+      }, // 1.3 * 2.1
       {
         type: "spiral",
-        count: 8,
+        count: 11,
         geometry: new THREE.TorusGeometry(2.73, 0.84, 8, 16),
-      },
+      }, // 1.3 * 2.1, 0.4 * 2.1
     ];
 
     // Create 4 specific colors for fallback shapes (5 shapes each)
