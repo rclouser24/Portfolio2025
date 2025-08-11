@@ -23,27 +23,38 @@ body {
 }
 
 @keyframes rotateText {
-    0%, 45% {
-        transform: translateY(0);
-        opacity: 1;
+    0%, 40% {
+        transform: translateX(0);
     }
-    50%, 95% {
-        transform: translateY(-100%);
-        opacity: 0;
+    50%, 90% {
+        transform: translateX(-100%);
     }
     100% {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateX(0);
     }
 }
 
 .title-container {
     height: 40px;
+    width: 200px;
     overflow: hidden;
+    margin-top: 1rem;
+    position: relative;
 }
 
 .title-slide {
-    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #2b2b2b;
+    line-height: 1;
+}
+
+.title-slide:nth-child(2) {
+    left: 100%;
 }
 
 /* Layout Components */
@@ -99,22 +110,15 @@ body {
 }
 
 .header__title-container {
-    margin-top: 0.75rem;
-}
-
-.header__title {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #2b2b2b;
-    line-height: 1;
+    margin-top: 1rem;
 }
 
 .header__social {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 /* Social Icons */
@@ -392,6 +396,14 @@ body {
         text-align: center;
     }
     
+    .header__title-text {
+        align-items: center;
+    }
+    
+    .header__social {
+        justify-content: center;
+    }
+    
     .header__profile-image {
         width: 200px;
         height: 200px;
@@ -426,6 +438,11 @@ body {
     
     .header__title {
         font-size: 2rem;
+    }
+    
+    .title-container {
+        height: 35px;
+        width: 120px;
     }
     
     .nav__menu {
