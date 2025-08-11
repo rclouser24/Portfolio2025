@@ -193,6 +193,9 @@ body {
     justify-content: space-between;
     padding: 4.125rem 0 0 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .project-card:hover {

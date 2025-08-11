@@ -540,6 +540,45 @@ class Navigation {
   }
 }
 
+// Project Tile Tilt Effect
+class ProjectTileTilt {
+  constructor() {
+    this.tiles = document.querySelectorAll(".project-card");
+    this.init();
+  }
+
+  init() {
+    this.tiles.forEach((tile) => {
+      tile.addEventListener("mousemove", (e) => this.handleMouseMove(e, tile));
+      tile.addEventListener("mouseleave", (e) =>
+        this.handleMouseLeave(e, tile)
+      );
+    });
+  }
+
+  handleMouseMove(e, tile) {
+    const rect = tile.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Calculate tilt based on cursor position relative to tile center
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const tiltX = ((y - centerY) / centerY) * -15; // Tilt X based on Y position
+    const tiltY = ((x - centerX) / centerX) * 15; // Tilt Y based on X position
+
+    // Apply the tilt transform
+    tile.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.05, 1.05, 1.05)`;
+  }
+
+  handleMouseLeave(e, tile) {
+    // Reset to original position when mouse leaves
+    tile.style.transform =
+      "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+  }
+}
+
 // Utility Functions
 const Utils = {
   // Debounce function for performance
@@ -588,6 +627,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize navigation
   new Navigation();
+
+  // Initialize project tile tilt effects
+  new ProjectTileTilt();
 
   // Add smooth scrolling to all internal links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
