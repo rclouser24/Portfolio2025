@@ -59,12 +59,22 @@ body {
     text-align: center;
 }
 
+.header__name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
 .header__name {
     font-size: 10rem;
     font-weight: 600;
     color: #121aff;
     line-height: 0.8;
     margin-bottom: 0.75rem;
+    text-align: center;
 }
 
 .header__name--first {
@@ -73,7 +83,8 @@ body {
 
 .header__name--letters {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 0.25rem;
 }
 
@@ -87,7 +98,8 @@ body {
 .header__profile-image {
     position: absolute;
     top: -3rem;
-    left: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
     width: 8.5rem;
     height: 8.5rem;
     border-radius: 6.9rem;
@@ -389,7 +401,8 @@ body {
         width: 6rem;
         height: 6rem;
         top: -2rem;
-        left: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
     }
     
     .projects,
