@@ -76,23 +76,23 @@ class ThreeJSScene {
       return;
     }
 
-    const modelFiles = [
-      "assets/3d/GLTF/Ball.gltf",
-      "assets/3d/GLTF/Cubic.gltf",
-      "assets/3d/GLTF/Hexagon.gltf",
-      "assets/3d/GLTF/Triangle.gltf",
-      "assets/3d/GLTF/Star.gltf",
-      "assets/3d/GLTF/Flow.gltf",
-      "assets/3d/GLTF/Twist.gltf",
-      "assets/3d/GLTF/Split.gltf",
+    // Define shape types with their distribution
+    const shapeTypes = [
+      { type: "cube", count: 3, model: "assets/3d/GLTF/Cubic.gltf" }, // 20% - 3 shapes
+      { type: "ball", count: 3, model: "assets/3d/GLTF/Ball.gltf" }, // 20% - 3 shapes
+      { type: "sphere", count: 3, model: "assets/3d/GLTF/Hexagon.gltf" }, // 20% - 3 shapes
+      { type: "triangle", count: 3, model: "assets/3d/GLTF/Triangle.gltf" }, // 20% - 3 shapes
+      { type: "spiral", count: 3, model: "assets/3d/GLTF/Twist.gltf" }, // 20% - 3 shapes
     ];
 
-    const numShapes = 8;
+    const totalShapes = 15;
 
-    for (let i = 0; i < numShapes; i++) {
-      const modelIndex = i % modelFiles.length;
-      this.loadModelAndCreateShape(modelFiles[modelIndex], i);
-    }
+    // Create shapes based on distribution
+    shapeTypes.forEach((shapeType) => {
+      for (let i = 0; i < shapeType.count; i++) {
+        this.loadModelAndCreateShape(shapeType.model, shapeType.type);
+      }
+    });
 
     // Add fallback if no models load
     setTimeout(() => {
@@ -103,16 +103,16 @@ class ThreeJSScene {
     }, 3000);
   }
 
-  loadModelAndCreateShape(modelPath, index) {
-    console.log("Loading model:", modelPath);
+  loadModelAndCreateShape(modelPath, shapeType) {
+    console.log("Loading model:", modelPath, "Type:", shapeType);
 
     this.loader.load(
       modelPath,
       (gltf) => {
-        console.log("Successfully loaded:", modelPath);
+        console.log("Successfully loaded:", modelPath, "Type:", shapeType);
         const model = gltf.scene;
 
-        this.setupModel(model);
+        this.setupModel(model, shapeType);
         this.scene.add(model);
         this.shapes.push(model);
 
@@ -127,7 +127,7 @@ class ThreeJSScene {
     );
   }
 
-  setupModel(model) {
+  setupModel(model, shapeType) {
     // Scale the model to reasonable size (increased by 30%)
     model.scale.set(0.65, 0.65, 0.65);
 
@@ -168,36 +168,74 @@ class ThreeJSScene {
   }
 
   createFallbackShapes() {
-    const geometry = new THREE.BoxGeometry(2.6, 2.6, 2.6);
+    // Create 15 shapes with variety: 3 cubes, 3 balls, 3 spheres, 3 triangles, 3 spirals
+    const shapeTypes = [
+      {
+        type: "cube",
+        count: 3,
+        geometry: new THREE.BoxGeometry(2.6, 2.6, 2.6),
+      },
+      {
+        type: "ball",
+        count: 3,
+        geometry: new THREE.SphereGeometry(1.3, 16, 16),
+      },
+      {
+        type: "sphere",
+        count: 3,
+        geometry: new THREE.SphereGeometry(1.3, 8, 6),
+      },
+      {
+        type: "triangle",
+        count: 3,
+        geometry: new THREE.ConeGeometry(1.3, 2.6, 3),
+      },
+      {
+        type: "spiral",
+        count: 3,
+        geometry: new THREE.TorusGeometry(1.3, 0.4, 8, 16),
+      },
+    ];
+
     const material = new THREE.MeshPhongMaterial({
       color: 0x121aff,
       transparent: true,
       opacity: 0.8,
     });
 
-    for (let i = 0; i < 8; i++) {
-      const cube = new THREE.Mesh(geometry, material);
-      cube.position.set(
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 20
-      );
+    shapeTypes.forEach((shapeType) => {
+      for (let i = 0; i < shapeType.count; i++) {
+        const shape = new THREE.Mesh(shapeType.geometry, material);
 
-      cube.velocity = new THREE.Vector3(
-        (Math.random() - 0.5) * 0.03,
-        (Math.random() - 0.5) * 0.03,
-        (Math.random() - 0.5) * 0.03
-      );
+        // Random position
+        shape.position.set(
+          (Math.random() - 0.5) * 20,
+          (Math.random() - 0.5) * 20,
+          (Math.random() - 0.5) * 20
+        );
 
-      cube.rotationVelocity = new THREE.Vector3(
-        (Math.random() - 0.5) * 0.01,
-        (Math.random() - 0.5) * 0.01,
-        (Math.random() - 0.5) * 0.01
-      );
+        // Random rotation
+        shape.rotation.x = Math.random() * Math.PI;
+        shape.rotation.y = Math.random() * Math.PI;
+        shape.rotation.z = Math.random() * Math.PI;
 
-      this.scene.add(cube);
-      this.shapes.push(cube);
-    }
+        // Physics properties
+        shape.velocity = new THREE.Vector3(
+          (Math.random() - 0.5) * 0.03,
+          (Math.random() - 0.5) * 0.03,
+          (Math.random() - 0.5) * 0.03
+        );
+
+        shape.rotationVelocity = new THREE.Vector3(
+          (Math.random() - 0.5) * 0.01,
+          (Math.random() - 0.5) * 0.01,
+          (Math.random() - 0.5) * 0.01
+        );
+
+        this.scene.add(shape);
+        this.shapes.push(shape);
+      }
+    });
   }
 
   setupEventListeners() {
