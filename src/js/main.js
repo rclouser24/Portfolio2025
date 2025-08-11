@@ -184,8 +184,8 @@ class ThreeJSScene {
         this.colorCounter[colorIndex]++;
 
         child.material.color.setHex(colors[colorIndex]);
-        child.material.transparent = true;
-        child.material.opacity = 0.9;
+        child.material.transparent = false; // Fully opaque
+        child.material.opacity = 1.0; // Full opacity
         child.material.shininess = 80;
       }
     });
@@ -246,8 +246,8 @@ class ThreeJSScene {
 
         const material = new THREE.MeshPhongMaterial({
           color: colors[colorIndex],
-          transparent: true,
-          opacity: 0.9,
+          transparent: false, // Fully opaque
+          opacity: 1.0, // Full opacity
         });
 
         const shape = new THREE.Mesh(shapeType.geometry, material);
@@ -326,20 +326,20 @@ class ThreeJSScene {
   }
 
   handleBoundaryCollisions(shape) {
-    // Bounce off viewport boundaries with damping
+    // Bounce off viewport boundaries with increased momentum
     const bounds = 20; // Increased bounds for larger shapes
-    const damping = 0.85; // Light bounce effect
+    const damping = 0.95; // Reduced damping for longer movement
 
     ["x", "y", "z"].forEach((axis) => {
       if (Math.abs(shape.position[axis]) > bounds) {
-        // Reverse velocity and apply damping
+        // Reverse velocity with minimal damping for longer movement
         shape.velocity[axis] *= -damping;
 
         // Prevent shapes from getting stuck outside bounds
         shape.position[axis] = Math.sign(shape.position[axis]) * bounds;
 
-        // Add slight random variation to prevent oscillation
-        shape.velocity[axis] += (Math.random() - 0.5) * 0.01;
+        // Add increased momentum variation for longer movement
+        shape.velocity[axis] += (Math.random() - 0.5) * 0.03;
       }
     });
   }
@@ -444,29 +444,29 @@ class ThreeJSScene {
         .subVectors(shape.position, cursorPosition)
         .normalize();
 
-      // Apply repulsion force (stronger when closer)
+      // Apply repulsion force (stronger when closer) with increased momentum
       const repulsionStrength =
-        Math.max(0, cursorRadius + 2 - distanceToCursor) * 0.02;
+        Math.max(0, cursorRadius + 2 - distanceToCursor) * 0.04; // Doubled strength
       const repulsionForce = repulsionDirection
         .clone()
         .multiplyScalar(repulsionStrength);
 
       shape.velocity.add(repulsionForce);
 
-      // Add slight upward force for more dynamic movement
-      shape.velocity.y += 0.01;
+      // Add increased upward force for longer movement
+      shape.velocity.y += 0.02;
     }
   }
 
   applyPhysicsForces(shape) {
-    // Apply air resistance/drag
-    shape.velocity.multiplyScalar(0.995);
+    // Apply minimal air resistance/drag for longer movement
+    shape.velocity.multiplyScalar(0.998); // Reduced from 0.995 for longer momentum
 
     // No gravity - shapes float freely in zero gravity
     // shape.velocity.y -= 0.0005; // Gravity removed
 
     // Limit maximum velocity to prevent chaos
-    const maxVelocity = 0.1;
+    const maxVelocity = 0.15; // Increased from 0.1 for more dynamic movement
     if (shape.velocity.length() > maxVelocity) {
       shape.velocity.normalize().multiplyScalar(maxVelocity);
     }
