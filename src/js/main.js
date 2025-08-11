@@ -647,6 +647,30 @@ class ProjectTileTilt {
   }
 }
 
+// Simple Custom Cursor for Project Pages
+class SimpleCustomCursor {
+  constructor() {
+    this.cursor = document.querySelector(".custom-cursor");
+    this.init();
+  }
+
+  init() {
+    if (this.cursor) {
+      this.initCustomCursor();
+    }
+  }
+
+  initCustomCursor() {
+    document.addEventListener("mousemove", (e) => {
+      if (this.cursor) {
+        this.cursor.style.left = e.clientX - 6 + "px";
+        this.cursor.style.top = e.clientY - 6 + "px";
+      }
+    });
+    document.body.style.cursor = "none";
+  }
+}
+
 // Utility Functions
 const Utils = {
   // Debounce function for performance
@@ -696,8 +720,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize navigation
   new Navigation();
 
-  // Initialize project tile tilt effects
-  new ProjectTileTilt();
+  // Initialize project tile tilt effects if project tiles exist
+  if (document.querySelectorAll(".project-card").length > 0) {
+    new ProjectTileTilt();
+  } else {
+    // Initialize simple custom cursor for project pages
+    new SimpleCustomCursor();
+  }
 
   // Add smooth scrolling to all internal links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
