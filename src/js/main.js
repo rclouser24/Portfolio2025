@@ -81,11 +81,10 @@ class ThreeJSScene {
       { type: "cube", count: 3, model: "assets/3d/GLTF/Cubic.gltf" }, // 20% - 3 shapes
       { type: "ball", count: 3, model: "assets/3d/GLTF/Ball.gltf" }, // 20% - 3 shapes
       { type: "sphere", count: 3, model: "assets/3d/GLTF/Hexagon.gltf" }, // 20% - 3 shapes
-      { type: "triangle", count: 3, model: "assets/3d/GLTF/Triangle.gltf" }, // 20% - 3 shapes
-      { type: "spiral", count: 3, model: "assets/3d/GLTF/Twist.gltf" }, // 20% - 3 shapes
+      { type: "spiral", count: 8, model: "assets/3d/GLTF/Twist.gltf" }, // 40% - 8 shapes (3 original + 5 new)
     ];
 
-    const totalShapes = 15;
+    const totalShapes = 20;
 
     // Create shapes based on distribution
     shapeTypes.forEach((shapeType) => {
@@ -128,8 +127,8 @@ class ThreeJSScene {
   }
 
   setupModel(model, shapeType) {
-    // Scale the model to reasonable size (increased by 30%)
-    model.scale.set(0.65, 0.65, 0.65);
+    // Scale the model to reasonable size (increased by 110% from original)
+    model.scale.set(1.365, 1.365, 1.365);
 
     // Random position
     const x = (Math.random() - 0.5) * 20;
@@ -156,55 +155,101 @@ class ThreeJSScene {
       (Math.random() - 0.5) * 0.01
     );
 
-    // Apply material to all meshes
+    // Apply material to all meshes with 4 specific colors (5 shapes each)
     model.traverse((child) => {
       if (child.isMesh) {
-        child.material.color.setHex(0x121aff);
+        // Define the 4 specific colors with 5 shapes each
+        const colors = [
+          0x69bfe8, // Light Blue - 5 shapes
+          0xfd6b63, // Coral Red - 5 shapes
+          0xfbe04b, // Yellow - 5 shapes
+          0xd686e6, // Purple - 5 shapes
+        ];
+
+        // Assign color based on shape index to ensure balanced distribution
+        // Use a counter to ensure exactly 5 shapes get each color
+        if (!this.colorCounter) this.colorCounter = { 0: 0, 1: 0, 2: 0, 3: 0 };
+
+        // Find the color with the lowest count to maintain balance
+        let colorIndex = 0;
+        let minCount = this.colorCounter[0];
+        for (let i = 1; i < 4; i++) {
+          if (this.colorCounter[i] < minCount) {
+            minCount = this.colorCounter[i];
+            colorIndex = i;
+          }
+        }
+
+        // Increment the counter for this color
+        this.colorCounter[colorIndex]++;
+
+        child.material.color.setHex(colors[colorIndex]);
         child.material.transparent = true;
-        child.material.opacity = 0.8;
-        child.material.shininess = 100;
+        child.material.opacity = 0.9;
+        child.material.shininess = 80;
       }
     });
   }
 
   createFallbackShapes() {
-    // Create 15 shapes with variety: 3 cubes, 3 balls, 3 spheres, 3 triangles, 3 spirals
+    // Create 20 shapes with variety: 3 cubes, 3 balls, 3 spheres, 8 spirals (increased by 110%)
     const shapeTypes = [
       {
         type: "cube",
         count: 3,
-        geometry: new THREE.BoxGeometry(2.6, 2.6, 2.6),
+        geometry: new THREE.BoxGeometry(5.46, 5.46, 5.46),
       },
       {
         type: "ball",
         count: 3,
-        geometry: new THREE.SphereGeometry(1.3, 16, 16),
+        geometry: new THREE.SphereGeometry(2.73, 16, 16),
       },
       {
         type: "sphere",
         count: 3,
-        geometry: new THREE.SphereGeometry(1.3, 8, 6),
-      },
-      {
-        type: "triangle",
-        count: 3,
-        geometry: new THREE.ConeGeometry(1.3, 2.6, 3),
+        geometry: new THREE.SphereGeometry(2.73, 8, 6),
       },
       {
         type: "spiral",
-        count: 3,
-        geometry: new THREE.TorusGeometry(1.3, 0.4, 8, 16),
+        count: 8,
+        geometry: new THREE.TorusGeometry(2.73, 0.84, 8, 16),
       },
     ];
 
-    const material = new THREE.MeshPhongMaterial({
-      color: 0x121aff,
-      transparent: true,
-      opacity: 0.8,
-    });
+    // Create 4 specific colors for fallback shapes (5 shapes each)
+    const colors = [
+      0x69bfe8, // Light Blue - 5 shapes
+      0xfd6b63, // Coral Red - 5 shapes
+      0xfbe04b, // Yellow - 5 shapes
+      0xd686e6, // Purple - 5 shapes
+    ];
 
     shapeTypes.forEach((shapeType) => {
       for (let i = 0; i < shapeType.count; i++) {
+        // Create material with balanced color distribution (5 shapes each)
+        // Use a counter to ensure exactly 5 shapes get each color
+        if (!this.fallbackColorCounter)
+          this.fallbackColorCounter = { 0: 0, 1: 0, 2: 0, 3: 0 };
+
+        // Find the color with the lowest count to maintain balance
+        let colorIndex = 0;
+        let minCount = this.fallbackColorCounter[0];
+        for (let i = 1; i < 4; i++) {
+          if (this.fallbackColorCounter[i] < minCount) {
+            minCount = this.fallbackColorCounter[i];
+            colorIndex = i;
+          }
+        }
+
+        // Increment the counter for this color
+        this.fallbackColorCounter[colorIndex]++;
+
+        const material = new THREE.MeshPhongMaterial({
+          color: colors[colorIndex],
+          transparent: true,
+          opacity: 0.9,
+        });
+
         const shape = new THREE.Mesh(shapeType.geometry, material);
 
         // Random position
@@ -256,44 +301,178 @@ class ThreeJSScene {
   }
 
   updateShapes() {
-    this.shapes.forEach((shape) => {
+    // Update all shapes positions and handle physics
+    this.shapes.forEach((shape, index) => {
       // Update position
       shape.position.add(shape.velocity);
-
-      // Bounce off boundaries
-      const bounds = 15;
-      ["x", "y", "z"].forEach((axis) => {
-        if (Math.abs(shape.position[axis]) > bounds) {
-          shape.velocity[axis] *= -0.8;
-          shape.position[axis] = Math.sign(shape.position[axis]) * bounds;
-        }
-      });
 
       // Update rotation
       shape.rotation.x += shape.rotationVelocity.x;
       shape.rotation.y += shape.rotationVelocity.y;
       shape.rotation.z += shape.rotationVelocity.z;
 
-      // Mouse interaction
-      this.raycaster.setFromCamera(this.mouse, this.camera);
-      const intersects = this.raycaster.intersectObjects(this.shapes, true);
+      // Handle viewport boundary collisions
+      this.handleBoundaryCollisions(shape);
 
-      if (intersects.length > 0) {
-        const intersect = intersects[0];
-        const shape = intersect.object.parent || intersect.object;
+      // Handle shape-to-shape collisions
+      this.handleShapeCollisions(shape, index);
 
-        // Push shape away from mouse
-        const pushForce = new THREE.Vector3()
-          .subVectors(shape.position, this.camera.position)
-          .normalize()
-          .multiplyScalar(0.05);
+      // Handle cursor interaction
+      this.handleCursorInteraction(shape);
 
-        shape.velocity.add(pushForce);
-      }
-
-      // Apply drag
-      shape.velocity.multiplyScalar(0.99);
+      // Apply physics forces
+      this.applyPhysicsForces(shape);
     });
+  }
+
+  handleBoundaryCollisions(shape) {
+    // Bounce off viewport boundaries with damping
+    const bounds = 20; // Increased bounds for larger shapes
+    const damping = 0.85; // Light bounce effect
+
+    ["x", "y", "z"].forEach((axis) => {
+      if (Math.abs(shape.position[axis]) > bounds) {
+        // Reverse velocity and apply damping
+        shape.velocity[axis] *= -damping;
+
+        // Prevent shapes from getting stuck outside bounds
+        shape.position[axis] = Math.sign(shape.position[axis]) * bounds;
+
+        // Add slight random variation to prevent oscillation
+        shape.velocity[axis] += (Math.random() - 0.5) * 0.01;
+      }
+    });
+  }
+
+  handleShapeCollisions(shape, currentIndex) {
+    // Check collision with all other shapes
+    this.shapes.forEach((otherShape, otherIndex) => {
+      if (currentIndex === otherIndex) return; // Skip self
+
+      // Calculate distance between shape centers
+      const distance = shape.position.distanceTo(otherShape.position);
+      const minDistance = 3; // Minimum distance before collision
+
+      if (distance < minDistance) {
+        // Collision detected - calculate collision response
+        this.resolveCollision(shape, otherShape, distance, minDistance);
+      }
+    });
+  }
+
+  resolveCollision(shape1, shape2, distance, minDistance) {
+    // Calculate collision normal
+    const collisionNormal = new THREE.Vector3()
+      .subVectors(shape1.position, shape2.position)
+      .normalize();
+
+    // Calculate overlap
+    const overlap = minDistance - distance;
+
+    // Move shapes apart to prevent clipping
+    const separationVector = collisionNormal
+      .clone()
+      .multiplyScalar(overlap * 0.5);
+    shape1.position.add(separationVector);
+    shape2.position.sub(separationVector);
+
+    // Calculate relative velocity
+    const relativeVelocity = new THREE.Vector3().subVectors(
+      shape1.velocity,
+      shape2.velocity
+    );
+
+    // Calculate impulse (collision response)
+    const restitution = 0.6; // Bounce factor
+    const impulse = relativeVelocity.dot(collisionNormal) * restitution;
+
+    // Apply impulse to velocities
+    const impulseVector = collisionNormal.clone().multiplyScalar(impulse);
+    shape1.velocity.sub(impulseVector);
+    shape2.velocity.add(impulseVector);
+
+    // Add slight random variation to prevent shapes from getting stuck
+    shape1.velocity.add(
+      new THREE.Vector3(
+        (Math.random() - 0.5) * 0.005,
+        (Math.random() - 0.5) * 0.005,
+        (Math.random() - 0.5) * 0.005
+      )
+    );
+
+    shape2.velocity.add(
+      new THREE.Vector3(
+        (Math.random() - 0.5) * 0.005,
+        (Math.random() - 0.5) * 0.005,
+        (Math.random() - 0.5) * 0.005
+      )
+    );
+  }
+
+  handleCursorInteraction(shape) {
+    // Create a virtual cursor sphere for interaction
+    const cursorRadius = 2;
+    const cursorPosition = new THREE.Vector3();
+
+    // Convert mouse position to 3D world position
+    this.raycaster.setFromCamera(this.mouse, this.camera);
+    const ray = this.raycaster.ray;
+
+    // Simple plane intersection calculation (avoiding THREE.Plane dependency)
+    const planeNormal = new THREE.Vector3(0, 0, 1);
+    const planePoint = new THREE.Vector3(0, 0, shape.position.z);
+
+    // Calculate intersection point
+    const denom = ray.direction.dot(planeNormal);
+    if (Math.abs(denom) > 0.0001) {
+      const t = planePoint.clone().sub(ray.origin).dot(planeNormal) / denom;
+      cursorPosition
+        .copy(ray.origin)
+        .add(ray.direction.clone().multiplyScalar(t));
+    } else {
+      // Fallback: use ray origin if no intersection
+      cursorPosition.copy(ray.origin);
+    }
+
+    // Check if cursor is close to shape
+    const distanceToCursor = shape.position.distanceTo(cursorPosition);
+
+    if (distanceToCursor < cursorRadius + 2) {
+      // 2 is shape radius approximation
+      // Calculate repulsion force
+      const repulsionDirection = new THREE.Vector3()
+        .subVectors(shape.position, cursorPosition)
+        .normalize();
+
+      // Apply repulsion force (stronger when closer)
+      const repulsionStrength =
+        Math.max(0, cursorRadius + 2 - distanceToCursor) * 0.02;
+      const repulsionForce = repulsionDirection
+        .clone()
+        .multiplyScalar(repulsionStrength);
+
+      shape.velocity.add(repulsionForce);
+
+      // Add slight upward force for more dynamic movement
+      shape.velocity.y += 0.01;
+    }
+  }
+
+  applyPhysicsForces(shape) {
+    // Apply air resistance/drag
+    shape.velocity.multiplyScalar(0.995);
+
+    // No gravity - shapes float freely in zero gravity
+    // shape.velocity.y -= 0.0005; // Gravity removed
+
+    // Limit maximum velocity to prevent chaos
+    const maxVelocity = 0.1;
+    if (shape.velocity.length() > maxVelocity) {
+      shape.velocity.normalize().multiplyScalar(maxVelocity);
+    }
+
+    // Apply rotation damping
+    shape.rotationVelocity.multiplyScalar(0.98);
   }
 
   updateCamera() {
