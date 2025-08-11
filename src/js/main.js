@@ -128,8 +128,8 @@ class ThreeJSScene {
   }
 
   setupModel(model) {
-    // Scale the model to reasonable size
-    model.scale.set(0.5, 0.5, 0.5);
+    // Scale the model to reasonable size (increased by 30%)
+    model.scale.set(0.65, 0.65, 0.65);
 
     // Random position
     const x = (Math.random() - 0.5) * 20;
@@ -168,7 +168,7 @@ class ThreeJSScene {
   }
 
   createFallbackShapes() {
-    const geometry = new THREE.BoxGeometry(2, 2, 2);
+    const geometry = new THREE.BoxGeometry(2.6, 2.6, 2.6);
     const material = new THREE.MeshPhongMaterial({
       color: 0x121aff,
       transparent: true,
