@@ -67,8 +67,11 @@ body {
 
 /* Header Styles */
 .header {
-    padding: 4rem 0 120px 0;
+    padding: 8rem 0 8rem 0;
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .header__name-container {
@@ -134,51 +137,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Navigation */
-.nav {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid #eaeaea;
-}
-
-.nav__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.nav__logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #121aff;
-    text-decoration: none;
-}
-
-.nav__menu {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
-.nav__link {
-    color: #2b2b2b;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav__link:hover {
-    color: #121aff;
-}
-
-.nav__link--active {
-    color: #121aff;
-}
-
 /* Projects Section */
 .projects {
     padding: 0 7rem;
@@ -187,7 +145,7 @@ body {
 .projects__filter {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
@@ -305,14 +263,14 @@ body {
 
 /* About Section */
 .about {
-    padding: 3rem 7rem;
+    padding: 8rem 7rem 3rem 7rem;
 }
 
 .about__title {
     font-size: 2.5rem;
     font-weight: 500;
     color: #2b2b2b;
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
 }
 
@@ -387,6 +345,11 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .header {
+        padding: 4rem 0 4rem 0;
+        min-height: 100vh;
+    }
+    
     .header__name-container {
         flex-direction: column;
         gap: 2rem;
@@ -415,6 +378,10 @@ body {
         padding: 0 2rem;
     }
     
+    .about {
+        padding: 4rem 2rem 2rem 2rem;
+    }
+    
     .projects__grid {
         grid-template-columns: 1fr;
     }
@@ -428,6 +395,11 @@ body {
 }
 
 @media (max-width: 480px) {
+    .header {
+        padding: 3rem 0 3rem 0;
+        min-height: 100vh;
+    }
+    
     .header__name {
         font-size: 4rem;
     }
@@ -444,9 +416,5 @@ body {
     .title-container {
         height: 35px;
         width: 120px;
-    }
-    
-    .nav__menu {
-        gap: 1rem;
     }
 } 
