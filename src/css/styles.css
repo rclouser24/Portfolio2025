@@ -103,6 +103,7 @@ body {
     width: 8.5rem;
     height: 8.5rem;
     border-radius: 6.9rem;
+    background-image: url('../assets/images/profileImage.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
