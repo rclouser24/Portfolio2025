@@ -264,6 +264,8 @@ body {
 /* About Section */
 .about {
     padding: 8rem 7rem 3rem 7rem;
+    background-color: rgba(253, 250, 246, 0.6);
+    backdrop-filter: blur(10px);
 }
 
 .about__title {
