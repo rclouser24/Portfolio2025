@@ -196,6 +196,62 @@ body {
     transform-origin: center center;
     transform-style: preserve-3d;
     perspective: 1000px;
+    cursor: none; /* Hide default cursor */
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background-color: #2b2b2b;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+}
+
+.custom-cursor.hover {
+    transform: scale(1.5);
+}
+
+/* Project Name Tag */
+.project-tag {
+    position: fixed;
+    background-color: rgba(43, 43, 43, 0.95);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    pointer-events: none;
+    z-index: 10001;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-tag.visible {
+    opacity: 1;
+}
+
+/* Project-specific tag borders */
+.project-tag[data-project="ai-hub"] {
+    border: 2px solid #c9e7ff;
+}
+
+.project-tag[data-project="gamification"] {
+    border: 2px solid #d1000c;
+}
+
+.project-tag[data-project="app-design"] {
+    border: 2px solid #d15c70;
+}
+
+.project-tag[data-project="spv-marketplace"] {
+    border: 2px solid #e0faff;
 }
 
 .project-card:hover {
@@ -216,8 +272,8 @@ body {
 }
 
 .project-card__image {
-    width: 9rem;
-    height: 8rem;
+    width: 12rem;
+    height: 10rem;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

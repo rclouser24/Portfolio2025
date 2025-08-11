@@ -15,6 +15,15 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg-[#fdfaf6] min-h-screen">
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Project Tags -->
+    <div class="project-tag" data-project="ai-hub">COLGATE</div>
+    <div class="project-tag" data-project="gamification">COLGATE</div>
+    <div class="project-tag" data-project="app-design">FITTRIPPER</div>
+    <div class="project-tag" data-project="spv-marketplace">ALLOCATIONS</div>
+    
     <!-- Three.js Container for 3D Background -->
     <div id="three-container"></div>
 
@@ -85,8 +94,8 @@
                 <!-- Projects Grid -->
                 <div class="projects__grid">
                     <!-- Project Card 1 - AI Hub -->
-                    <article class="project-card">
-                        <div class="project-card__image" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?w=144&h=129&fit=crop')"></div>
+                    <article class="project-card" data-project="ai-hub">
+                        <div class="project-card__image" style="background-image: url('../assets/images/aihub.png')"></div>
                         <div class="project-card__details">
                             <div class="project-card__info">
                                 <h3 class="project-card__title">AI HUB</h3>
@@ -100,8 +109,8 @@
                     </article>
 
                     <!-- Project Card 2 - Gamification -->
-                    <article class="project-card project-card--red">
-                        <div class="project-card__image" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?w=162&h=124&fit=crop')"></div>
+                    <article class="project-card project-card--red" data-project="gamification">
+                        <div class="project-card__image" style="background-image: url('../assets/images/colgate.png')"></div>
                         <div class="project-card__details">
                             <div class="project-card__info">
                                 <h3 class="project-card__title">GAMIFICATION</h3>
@@ -115,8 +124,8 @@
                     </article>
 
                     <!-- Project Card 3 - App Design -->
-                    <article class="project-card project-card--pink">
-                        <div class="project-card__image" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?w=134&h=124&fit=crop')"></div>
+                    <article class="project-card project-card--pink" data-project="app-design">
+                        <div class="project-card__image" style="background-image: url('../assets/images/Fittripper.png')"></div>
                         <div class="project-card__details">
                             <div class="project-card__info">
                                 <h3 class="project-card__title">APP DESIGN</h3>
@@ -130,8 +139,8 @@
                     </article>
 
                     <!-- Project Card 4 - SPV Marketplace -->
-                    <article class="project-card project-card--light-blue">
-                        <div class="project-card__image" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?w=176&h=119&fit=crop')"></div>
+                    <article class="project-card project-card--light-blue" data-project="spv-marketplace">
+                        <div class="project-card__image" style="background-image: url('../assets/images/allocations.png')"></div>
                         <div class="project-card__details">
                             <div class="project-card__info">
                                 <h3 class="project-card__title">SPV MARKETPLACE</h3>

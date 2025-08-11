@@ -544,16 +544,51 @@ class Navigation {
 class ProjectTileTilt {
   constructor() {
     this.tiles = document.querySelectorAll(".project-card");
+    this.cursor = document.querySelector(".custom-cursor");
+    this.projectTags = document.querySelectorAll(".project-tag");
+    this.currentTag = null;
     this.init();
   }
 
   init() {
+    // Initialize custom cursor
+    this.initCustomCursor();
+
+    // Initialize tile interactions
     this.tiles.forEach((tile) => {
       tile.addEventListener("mousemove", (e) => this.handleMouseMove(e, tile));
+      tile.addEventListener("mouseenter", (e) =>
+        this.handleMouseEnter(e, tile)
+      );
       tile.addEventListener("mouseleave", (e) =>
         this.handleMouseLeave(e, tile)
       );
     });
+  }
+
+  initCustomCursor() {
+    // Track mouse movement for custom cursor
+    document.addEventListener("mousemove", (e) => {
+      if (this.cursor) {
+        this.cursor.style.left = e.clientX - 6 + "px";
+        this.cursor.style.top = e.clientY - 6 + "px";
+      }
+    });
+
+    // Hide default cursor on project tiles
+    document.body.style.cursor = "none";
+  }
+
+  handleMouseEnter(e, tile) {
+    const projectType = tile.getAttribute("data-project");
+
+    // Show and position project tag
+    this.showProjectTag(projectType, e.clientX, e.clientY);
+
+    // Scale up cursor
+    if (this.cursor) {
+      this.cursor.classList.add("hover");
+    }
   }
 
   handleMouseMove(e, tile) {
@@ -570,12 +605,49 @@ class ProjectTileTilt {
 
     // Apply the tilt transform
     tile.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.05, 1.05, 1.05)`;
+
+    // Update project tag position
+    if (this.currentTag) {
+      this.currentTag.style.left = e.clientX + 20 + "px";
+      this.currentTag.style.top = e.clientY - 20 + "px";
+    }
   }
 
   handleMouseLeave(e, tile) {
     // Reset to original position when mouse leaves
     tile.style.transform =
       "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+
+    // Hide project tag
+    this.hideProjectTag();
+
+    // Scale down cursor
+    if (this.cursor) {
+      this.cursor.classList.remove("hover");
+    }
+  }
+
+  showProjectTag(projectType, x, y) {
+    // Hide all tags first
+    this.projectTags.forEach((tag) => {
+      tag.classList.remove("visible");
+    });
+
+    // Show the matching tag
+    const tag = document.querySelector(`[data-project="${projectType}"]`);
+    if (tag) {
+      this.currentTag = tag;
+      tag.style.left = x + 20 + "px";
+      tag.style.top = y - 20 + "px";
+      tag.classList.add("visible");
+    }
+  }
+
+  hideProjectTag() {
+    if (this.currentTag) {
+      this.currentTag.classList.remove("visible");
+      this.currentTag = null;
+    }
   }
 }
 
