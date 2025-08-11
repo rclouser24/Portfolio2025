@@ -51,6 +51,7 @@ body {
     font-weight: 500;
     color: #2b2b2b;
     line-height: 1;
+    text-align: left;
 }
 
 .title-slide:nth-child(2) {
