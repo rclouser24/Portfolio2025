@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hub - Ryan Clouser Portfolio</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles and Scripts -->
+    <link href="https://fonts.googleapis.com/css2?family=Finlandica:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body class="bg-[#fdfaf6] min-h-screen">
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Header -->
+        <header class="ai-hub-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-container">
+                        <h1 class="logo-title">AI HUB</h1>
+                        <p class="logo-subtitle">COLGATE 2024/ 2025</p>
+                    </div>
+                    <a href="index.html" class="close-button">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#2b2b2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Design Studio Section -->
+        <section class="design-studio-section">
+            <div class="container">
+                <div class="section-content">
+                    <div class="section-text-container">
+                        <h2 class="section-title">Design Studio</h2>
+                        <p class="section-description">An enterprise AI image generation platform that empowers Colgate-Palmolive teams to produce marketing and internal visuals efficiently, while maintaining strict brand consistency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="overview-section">
+            <div class="container">
+                <h2 class="overview-title">OVERVIEW</h2>
+                <div class="overview-content">
+                    <div class="divider"></div>
+                    <div class="overview-details">
+                        <div class="overview-item">
+                            <h3 class="overview-item-title">GOAL</h3>
+                            <p class="overview-item-text">Design a AI image generation tool for Colgate employees</p>
+                        </div>
+                        <div class="overview-item">
+                            <h3 class="overview-item-title">MY ROLE</h3>
+                            <p class="overview-item-text">Product Designer</p>
+                        </div>
+                        <div class="overview-item">
+                            <h3 class="overview-item-title">TASKS</h3>
+                            <div class="tasks-list">
+                                <p>UX/UI Design</p>
+                                <p>Wireframing</p>
+                                <p>User Research</p>
+                                <p>Usability Testing</p>
+                                <p>Stakeholder Interviews</p>
+                                <p>Prototyping</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Background Section -->
+            <section class="background-section">
+                <div class="container">
+                    <div class="background-image-container">
+                        <img src="src/assets/images/figjam.png" alt="AI Hub Background" class="background-image">
+                    </div>
+                    <div class="background-text-container">
+                        <h3 class="background-title">Background</h3>
+                        <p class="background-description">Through conducting internal research, we learned that 80% of participants regularly create imagery for both internal and external use and are looking for a tool that can help them generate images quickly. Many users struggled to find visuals that align with Colgate's brand guidelines and often face challenges when editing images to meet specific needs. Due to this challenge we developed a series of guardrails to help users generate images that would align with Colgate's brands and AI image policies.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Previous Experience Section -->
+            <section class="previous-experience-section">
+                <div class="container">
+                    <div class="previous-experience-content">
+                        <div class="previous-experience-images">
+                            <div class="image-container">
+                                <img src="src/assets/images/oldgen.png" alt="Original Design Studio Tool" class="experience-image">
+                            </div>
+                            <div class="image-container">
+                                <img src="src/assets/images/figjam2.png" alt="Competitive Analysis" class="experience-image">
+                            </div>
+                        </div>
+                        <div class="image-labels">
+                            <span class="image-label">Original Design Studio Tool</span>
+                            <span class="image-label">Competitive Analysis</span>
+                        </div>
+                        <div class="experience-description">
+                            <p>The previous experience lacked essential functionality—users couldn't edit prompts or images, which forced them to start over each time they wanted to make changes. There was no library to access previously generated images, and no built-in safeguards to prevent users from creating content that violated company guidelines. It was far below the standard for AI image generators, and therefore we conducted a competitive analysis to help discover the best practices for designing image generators. Following that analysis we gathered as a team and labeled different aspects of the tools that we would like to implement into our own image generator.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Approach Section -->
+            <section class="approach-section">
+                <div class="container">
+                    <div class="approach-content">
+                        <div class="approach-images">
+                            <img src="src/assets/images/designsystem.png" alt="Design System Piece" class="approach-image">
+                        </div>
+                        <div class="image-caption">Piece of the image gen design system</div>
+                        <div class="approach-description">
+                            <h3 class="approach-title">Approach</h3>
+                            <p>Once we had a clear structure in place, we moved on to wireframing, focusing on how each screen would support different user flows. This phase allowed us to quickly explore layout ideas without getting bogged down in visual design details. Early on, our main priority was determining how to organize tools between the prompting and editing stages, as well as defining the governance flow. This foundation enabled us to scale the product thoughtfully and introduce additional features over time. As part of the governance system, we implemented a check that activates when users upload a reference image for generation, helping ensure alignment with brand guidelines. After finalizing the user flow and wireframes we designed an entire design system around the new AI image generator, where we focused on modular design and reusability.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- High Fidelity Section -->
+            <section class="high-fidelity-section">
+                <div class="container">
+                    <div class="high-fidelity-content">
+                        <div class="high-fidelity-images">
+                            <img src="src/assets/images/step1.png" alt="Dialogue Structure" class="hifi-image">
+                            <img src="src/assets/images/step2.png" alt="High Fidelity Design" class="hifi-image">
+                        </div>
+                        <div class="high-fidelity-description">
+                            <p>After the wireframes were finalized, we moved into high-fidelity UI design, translating our concepts into a visual system ready for developer handoff. This involved defining the web app's visual identity in alignment with Colgate's brand guidelines, while ensuring consistency with modern UI best practices. One of our key achievements was designing an experience that was both intuitive for beginners and robust enough for power users. We focused on creating a "learnable" platform—one that encouraged exploration and experimentation, helping users discover the right tools to generate their best possible images.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact Section -->
+            <section class="impact-section">
+                <div class="container">
+                    <div class="impact-content">
+                        <div class="impact-images">
+                            <img src="src/assets/images/step3.png" alt="Impact 1" class="impact-image impact-image-1">
+                            <img src="src/assets/images/step4.png" alt="Impact 2" class="impact-image impact-image-2">
+                            <img src="src/assets/images/component.png" alt="Impact 3" class="impact-image impact-image-3">
+                        </div>
+                        <div class="impact-text">
+                            <h3 class="impact-title">Impact</h3>
+                            <div class="impact-metrics">
+                                <div class="impact-metric">
+                                    <span class="metric-label">Users</span>
+                                    <span class="metric-value">17% Increase in users</span>
+                                </div>
+                                <div class="impact-metric">
+                                    <span class="metric-label">Savings</span>
+                                    <span class="metric-value">22% Agency decrease in price</span>
+                                </div>
+                                <div class="impact-metric">
+                                    <span class="metric-label">Images</span>
+                                    <span class="metric-value">7381 New images created per month</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="ai-hub-footer">
+        <div class="footer-divider"></div>
+        <div class="footer-content">
+            <div class="footer-email">RYANJCLOUSER@GMAIL.COM</div>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/ryan-clouser/" class="footer-link">LINKEDIN</a>
+                <a href="https://docs.google.com/document/d/1NefNHy11Cgt0FHBVYAxYWTMje7YXfo2dXrcSWPNtO68/edit?usp=sharing" class="footer-link">RESUME</a>
+                <a href="mailto:ryanjclouser@gmail.com" class="footer-link">CONTACT</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="src/js/main.js"></script>
+</body>
+</html> 
