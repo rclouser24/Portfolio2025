@@ -262,6 +262,28 @@ body {
     transform: scale(1.5);
 }
 
+/* Explore Image Section */
+.explore-section {
+    padding: 4rem 7rem;
+}
+
+.explore-container {
+    background-color: #ebeffc;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+.explore-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
+
 /* Project Name Tag */
 .project-tag {
     position: fixed;
@@ -883,22 +905,39 @@ body {
 
 .approach-images {
     background-color: #ebeffc;
-    padding: 48px 32px;
+    padding: 0;
     border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 581px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .approach-image {
     border-radius: 8px;
+    object-fit: cover;
+}
+
+.approach-main {
+    position: absolute;
+    bottom: 40px;
+    left: 237px;
+    top: 40px;
     width: auto;
-    height: 100%;
-    object-fit: contain;
+    height: calc(100% - 80px);
+    aspect-ratio: 544/1098;
+}
+
+.approach-detail {
+    position: absolute;
+    top: 50%;
+    right: 238px;
+    transform: translateY(-50%);
+    width: 451px;
+    height: 349px;
+    background-size: 210.56% 550.48%;
+    background-position: 50.67% 86.05%;
 }
 
 .image-caption {
