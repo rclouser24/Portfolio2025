@@ -899,10 +899,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px;
     overflow: hidden !important;
     position: relative !important;
     margin: 0 auto !important;
+}
+
+.approach-images-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: 15%;
 }
 
 .approach-image {
@@ -929,6 +935,8 @@ body {
     height: auto;
     max-width: 100%;
     object-fit: contain;
+    margin-left: -300px;
+    transform: scale(0.4);
 }
 
 .image-caption {
