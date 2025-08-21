@@ -7,22 +7,19 @@ A modern, organized portfolio website showcasing UX/UI design work and projects.
 ```
 Ryan_Portfolio/
 ├── index.html                 # Main entry point with navigation
-├── README.md                  # Project documentation
-├── src/
-│   ├── html/                 # HTML page files
-│   │   ├── index.html        # Homepage
-│   │   ├── project1.html     # AI Hub project
-│   │   ├── project2.html     # Gamification project
-│   │   ├── project3.html     # App Design project
-│   │   └── project4.html     # SPV Marketplace project
-│   ├── css/                  # Stylesheets
-│   │   └── styles.css        # Main stylesheet with BEM methodology
-│   ├── js/                   # JavaScript files
-│   │   └── main.js           # Main script with Three.js and navigation
-│   └── assets/               # Static assets
-│       └── 3d/               # 3D model files
-│           └── GLTF/         # GLTF 3D models for background
-└── public/                    # Legacy assets (can be removed)
+├── ai-hub.html               # AI Hub project page
+├── fittripper.html           # FitTripper project page
+├── gamification.html         # Gamification project page
+├── spv-marketplace.html      # SPV Marketplace project page
+├── README.md                 # Project documentation
+├── .gitignore                # Git ignore rules
+├── css/
+│   └── styles.css            # Main stylesheet with BEM methodology
+├── js/
+│   └── main.js               # Main script with Three.js and navigation
+└── assets/
+    ├── images/               # All project images and assets
+    └── fonts/                # Custom font files (if any)
 ```
 
 ## 🎯 Features
@@ -51,9 +48,10 @@ Ryan_Portfolio/
 
 ## 🚀 Getting Started
 
-1. **Open the main page**: `index.html`
-2. **Navigate between pages** using the navigation menu
-3. **View projects** by clicking on project cards or navigation links
+1. **Open the main page**: `index.html` in any modern web browser
+2. **No server required** - This is a completely static website
+3. **Navigate between pages** using the navigation menu
+4. **View projects** by clicking on project cards or navigation links
 
 ## 🛠️ Technical Details
 
@@ -110,9 +108,11 @@ Ryan_Portfolio/
 ### **File Organization**
 
 - **Separation of Concerns**: HTML, CSS, and JavaScript in separate files
-- **Modular Structure**: Each page has its own HTML file
-- **Shared Resources**: Common styles and scripts centralized
-- **Asset Management**: 3D models and images properly organized
+- **Modular Structure**: Each page has its own HTML file in the root directory
+- **Shared Resources**: Common styles and scripts centralized in css/ and js/ directories
+- **Asset Management**: All images and assets consolidated in assets/ directory
+- **Static Website**: No server required - runs entirely in the browser
+- **Tailwind CSS**: Styling via CDN with custom CSS overrides
 
 ### **Best Practices**
 
@@ -126,20 +126,23 @@ Ryan_Portfolio/
 ### **HTML Files**
 
 - `index.html`: Main entry point with project overview
-- `src/html/index.html`: Detailed homepage
-- `src/html/project*.html`: Individual project pages
+- `ai-hub.html`: AI Hub project page
+- `fittripper.html`: FitTripper project page
+- `gamification.html`: Gamification project page
+- `spv-marketplace.html`: SPV Marketplace project page
 
 ### **CSS Files**
 
-- `src/css/styles.css`: Complete stylesheet with all components
+- `css/styles.css`: Complete stylesheet with all components
 
 ### **JavaScript Files**
 
-- `src/js/main.js`: Main functionality including Three.js and navigation
+- `js/main.js`: Main functionality including Three.js and navigation
 
 ### **Assets**
 
-- `src/assets/3d/GLTF/`: 3D model files for background animation
+- `assets/images/`: All project images and visual assets
+- `assets/fonts/`: Custom font files (if any)
 
 ## 🌟 Key Benefits
 
@@ -151,6 +154,8 @@ Ryan_Portfolio/
 6. **Accessibility**: Screen reader friendly and keyboard navigable
 7. **Performance**: Optimized loading and smooth animations
 8. **Maintainability**: Easy to update content and add new projects
+9. **Static Deployment**: No server required - deploy anywhere (Netlify, Vercel, GitHub Pages)
+10. **Fast Loading**: No backend processing delays
 
 ## 🔄 Future Enhancements
 
