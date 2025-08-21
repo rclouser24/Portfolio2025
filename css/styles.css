@@ -902,6 +902,8 @@ body {
     flex-direction: column;
     gap: 16px;
     width: 100%;
+    overflow: hidden !important;
+    position: relative !important;
 }
 
 .approach-images {
@@ -910,11 +912,14 @@ body {
     border-radius: 16px;
     width: 100%;
     min-height: 500px;
+    max-height: 500px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 32px;
+    overflow: hidden !important;
+    position: relative !important;
 }
 
 .approach-image {
@@ -932,6 +937,9 @@ body {
     top: auto !important;
     left: auto !important;
     transform: none !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    display: block !important;
 }
 
 .approach-detail {
