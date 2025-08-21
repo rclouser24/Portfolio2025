@@ -911,8 +911,8 @@ body {
     padding: 40px;
     border-radius: 16px;
     width: 100%;
-    min-height: 500px;
-    max-height: 500px;
+    min-height: 600px;
+    max-height: 600px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -937,9 +937,7 @@ body {
     top: auto !important;
     left: auto !important;
     transform: none !important;
-    overflow: hidden !important;
     box-sizing: border-box !important;
-    display: block !important;
 }
 
 .approach-detail {
