@@ -916,7 +916,7 @@ body {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 32px;
     overflow: hidden !important;
     position: relative !important;
@@ -928,16 +928,17 @@ body {
 }
 
 .approach-main {
-    width: 200px !important;
-    height: 400px !important;
-    max-width: 200px !important;
-    max-height: 400px !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
     object-fit: contain !important;
     position: relative !important;
     top: auto !important;
     left: auto !important;
     transform: none !important;
     box-sizing: border-box !important;
+    flex: 1 !important;
 }
 
 .approach-detail {
