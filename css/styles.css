@@ -928,17 +928,16 @@ body {
 }
 
 .approach-main {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
+    width: 400px !important;
+    height: 500px !important;
+    max-width: 400px !important;
+    max-height: 500px !important;
     object-fit: contain !important;
     position: relative !important;
     top: auto !important;
     left: auto !important;
     transform: none !important;
     box-sizing: border-box !important;
-    flex: 1 !important;
 }
 
 .approach-detail {
