@@ -1,5 +1,6 @@
 /* ==========================================================================
    Portfolio Website - Main Stylesheet
+   Version: 1000 - Force image sizing fixes
    ========================================================================== */
 
 /* Base Styles */
@@ -905,13 +906,15 @@ body {
 
 .approach-images {
     background-color: #ebeffc;
-    padding: 0;
+    padding: 40px;
     border-radius: 16px;
-    position: relative;
     width: 100%;
-    height: 581px;
+    min-height: 500px;
     box-sizing: border-box;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
 }
 
 .approach-image {
@@ -920,24 +923,22 @@ body {
 }
 
 .approach-main {
-    position: absolute;
-    bottom: 40px;
-    left: 237px;
-    top: 40px;
-    width: auto;
-    height: calc(100% - 80px);
-    aspect-ratio: 544/1098;
+    width: 200px !important;
+    height: 400px !important;
+    max-width: 200px !important;
+    max-height: 400px !important;
+    object-fit: contain !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
 }
 
 .approach-detail {
-    position: absolute;
-    top: 50%;
-    right: 238px;
-    transform: translateY(-50%);
-    width: 451px;
-    height: 349px;
-    background-size: 210.56% 550.48%;
-    background-position: 50.67% 86.05%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .image-caption {
