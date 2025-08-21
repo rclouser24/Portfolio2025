@@ -862,7 +862,7 @@ body {
 }
 
 .image-label:nth-child(2) {
-    margin-left: calc(50% - 123px);
+    margin-left: calc(50% - 123px - 3%);
     margin-right: auto;
 }
 
@@ -1012,6 +1012,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 48px;
     width: 100%;
     height: 581px;
 }
@@ -1119,7 +1120,7 @@ body {
 .impact-image-3 {
     height: auto;
     width: auto;
-    max-width: calc((100% - 32px) / 3);
+    max-width: calc(((100% - 32px) / 3) * 0.6);
     flex: 1;
 }
 
