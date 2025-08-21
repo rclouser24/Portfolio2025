@@ -24,7 +24,7 @@ Ryan_Portfolio/
 
 ## 🎯 Features
 
-### **Homepage (`src/html/index.html`)**
+### **Homepage (`index.html`)**
 
 - Personal introduction with rotating titles
 - Project showcase grid

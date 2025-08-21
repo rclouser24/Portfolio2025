@@ -92,7 +92,7 @@ body {
     width: 366px;
     height: 432px;
     border-radius: 24px;
-    background-image: url('../assets/images/profileImage.png');
+    background-image: url('assets/images/profileImage.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -916,15 +916,17 @@ body {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 32px;
     overflow: hidden !important;
     position: relative !important;
+    margin: 0 auto !important;
 }
 
 .approach-image {
     border-radius: 8px;
     object-fit: cover;
+    flex-shrink: 0 !important;
 }
 
 .approach-main {
