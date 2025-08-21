@@ -92,10 +92,12 @@ body {
     width: 366px;
     height: 432px;
     border-radius: 24px;
-    background-image: url('assets/images/profileImage.png');
+    background-image: url('../assets/images/profileImage.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: 10 !important;
+    position: relative !important;
 }
 
 .header__title-text {
