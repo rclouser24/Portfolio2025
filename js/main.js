@@ -536,15 +536,53 @@ class Navigation {
   }
 }
 
+// Role Toggle Functionality
+class RoleToggle {
+    constructor() {
+        this.toggle = document.getElementById('role-toggle');
+        this.designerText = document.querySelector('[data-role="designer"]');
+        this.developerText = document.querySelector('[data-role="developer"]');
+        this.isDesigner = true; // Start with designer active
+        this.init();
+    }
+
+    init() {
+        if (this.toggle) {
+            this.toggle.addEventListener('click', () => this.toggleRole());
+            this.updateActiveState();
+        }
+    }
+
+    toggleRole() {
+        this.isDesigner = !this.isDesigner;
+        this.toggle.classList.toggle('toggled', !this.isDesigner);
+        this.updateActiveState();
+    }
+
+    updateActiveState() {
+        if (this.isDesigner) {
+            this.designerText.classList.add('projects__filter-item--active');
+            this.designerText.classList.remove('projects__filter-item--inactive');
+            this.developerText.classList.add('projects__filter-item--inactive');
+            this.developerText.classList.remove('projects__filter-item--active');
+        } else {
+            this.developerText.classList.add('projects__filter-item--active');
+            this.developerText.classList.remove('projects__filter-item--inactive');
+            this.designerText.classList.add('projects__filter-item--inactive');
+            this.designerText.classList.remove('projects__filter-item--active');
+        }
+    }
+}
+
 // Project Tile Tilt Effect
 class ProjectTileTilt {
-  constructor() {
-    this.tiles = document.querySelectorAll(".project-card");
-    this.cursor = document.querySelector(".custom-cursor");
-    this.projectTags = document.querySelectorAll(".project-tag");
-    this.currentTag = null;
-    this.init();
-  }
+    constructor() {
+        this.tiles = document.querySelectorAll(".project-card");
+        this.cursor = document.querySelector(".custom-cursor");
+        this.projectTags = document.querySelectorAll(".project-tag");
+        this.currentTag = null;
+        this.init();
+    }
 
   init() {
     // Initialize custom cursor
@@ -719,6 +757,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize navigation
   new Navigation();
+
+  // Initialize role toggle
+  new RoleToggle();
 
   // Initialize project tile tilt effects if project tiles exist
   if (document.querySelectorAll(".project-card").length > 0) {
