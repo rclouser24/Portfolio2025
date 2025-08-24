@@ -167,6 +167,7 @@ body {
 /* Projects Section */
 .projects {
     padding: 0 7rem;
+    position: relative;
 }
 
 .projects__filter {
@@ -175,6 +176,8 @@ body {
     justify-content: flex-start;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 10;
 }
 
 .projects__filter-item {
@@ -229,6 +232,42 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
     gap: 1.5rem;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+.projects__grid--developer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+}
+
+.projects__grid--developer.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+.projects__grid--designer {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+.projects__grid--designer.sliding-out {
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
 }
 
 /* Custom grid positioning for specific cards */
@@ -247,6 +286,25 @@ body {
 
 .project-card:nth-child(4) {
     grid-column: 1 / 2; /* Fittripper takes 1/3 of second row (left side) */
+    grid-row: 2; /* Ensure it's in the second row */
+}
+
+/* Developer project grid positioning - same as designer projects */
+.projects__grid--developer .project-card:nth-child(1) {
+    grid-column: 1 / 3; /* Portfolio Site takes 2/3 of first row */
+}
+
+.projects__grid--developer .project-card:nth-child(2) {
+    grid-column: 3 / 4; /* Unsuber App takes 1/3 of first row */
+}
+
+.projects__grid--developer .project-card:nth-child(3) {
+    grid-column: 2 / 4; /* Three.js Scene takes 2/3 of second row (right side) */
+    grid-row: 2; /* Ensure it's in the second row */
+}
+
+.projects__grid--developer .project-card:nth-child(4) {
+    grid-column: 1 / 2; /* Custom Cursor takes 1/3 of second row (left side) */
     grid-row: 2; /* Ensure it's in the second row */
 }
 
@@ -341,6 +399,22 @@ body {
 
 .project-card--light-blue {
     background-color: #e0faff;
+}
+
+.project-card--green {
+    background-color: #90EE90;
+}
+
+.project-card--orange {
+    background-color: #FFB347;
+}
+
+.project-card--purple {
+    background-color: #DDA0DD;
+}
+
+.project-card--teal {
+    background-color: #98D8C8;
 }
 
 .project-card__image {

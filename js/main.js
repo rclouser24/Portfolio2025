@@ -538,51 +538,68 @@ class Navigation {
 
 // Role Toggle Functionality
 class RoleToggle {
-    constructor() {
-        this.toggle = document.getElementById('role-toggle');
-        this.designerText = document.querySelector('[data-role="designer"]');
-        this.developerText = document.querySelector('[data-role="developer"]');
-        this.isDesigner = true; // Start with designer active
-        this.init();
-    }
+  constructor() {
+    this.toggle = document.getElementById("role-toggle");
+    this.designerText = document.querySelector('[data-role="designer"]');
+    this.developerText = document.querySelector('[data-role="developer"]');
+    this.designerProjects = document.getElementById("designer-projects");
+    this.developerProjects = document.getElementById("developer-projects");
+    this.isDesigner = true; // Start with designer active
+    this.init();
+  }
 
-    init() {
-        if (this.toggle) {
-            this.toggle.addEventListener('click', () => this.toggleRole());
-            this.updateActiveState();
-        }
+  init() {
+    if (this.toggle) {
+      this.toggle.addEventListener("click", () => this.toggleRole());
+      this.updateActiveState();
+      this.updateProjectDisplay();
     }
+  }
 
-    toggleRole() {
-        this.isDesigner = !this.isDesigner;
-        this.toggle.classList.toggle('toggled', !this.isDesigner);
-        this.updateActiveState();
-    }
+  toggleRole() {
+    this.isDesigner = !this.isDesigner;
+    this.toggle.classList.toggle("toggled", !this.isDesigner);
+    this.updateActiveState();
+    this.updateProjectDisplay();
+  }
 
-    updateActiveState() {
-        if (this.isDesigner) {
-            this.designerText.classList.add('projects__filter-item--active');
-            this.designerText.classList.remove('projects__filter-item--inactive');
-            this.developerText.classList.add('projects__filter-item--inactive');
-            this.developerText.classList.remove('projects__filter-item--active');
-        } else {
-            this.developerText.classList.add('projects__filter-item--active');
-            this.developerText.classList.remove('projects__filter-item--inactive');
-            this.designerText.classList.add('projects__filter-item--inactive');
-            this.designerText.classList.remove('projects__filter-item--active');
-        }
+  updateActiveState() {
+    if (this.isDesigner) {
+      this.designerText.classList.add("projects__filter-item--active");
+      this.designerText.classList.remove("projects__filter-item--inactive");
+      this.developerText.classList.add("projects__filter-item--inactive");
+      this.developerText.classList.remove("projects__filter-item--active");
+    } else {
+      this.developerText.classList.add("projects__filter-item--active");
+      this.developerText.classList.remove("projects__filter-item--inactive");
+      this.designerText.classList.add("projects__filter-item--inactive");
+      this.designerText.classList.remove("projects__filter-item--active");
     }
+  }
+
+  updateProjectDisplay() {
+    if (this.isDesigner) {
+      // Show designer projects, hide developer projects
+      this.developerProjects.classList.remove("active");
+      this.designerProjects.classList.remove("sliding-out");
+      this.designerProjects.classList.add("projects__grid--designer");
+    } else {
+      // Show developer projects, hide designer projects
+      this.designerProjects.classList.add("sliding-out");
+      this.developerProjects.classList.add("active");
+    }
+  }
 }
 
 // Project Tile Tilt Effect
 class ProjectTileTilt {
-    constructor() {
-        this.tiles = document.querySelectorAll(".project-card");
-        this.cursor = document.querySelector(".custom-cursor");
-        this.projectTags = document.querySelectorAll(".project-tag");
-        this.currentTag = null;
-        this.init();
-    }
+  constructor() {
+    this.tiles = document.querySelectorAll(".project-card");
+    this.cursor = document.querySelector(".custom-cursor");
+    this.projectTags = document.querySelectorAll(".project-tag");
+    this.currentTag = null;
+    this.init();
+  }
 
   init() {
     // Initialize custom cursor
