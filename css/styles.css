@@ -430,7 +430,23 @@ body {
 }
 
 .project-card--book-search {
+    background-color: #2F2F2F;
+}
+
+/* Custom image sizing for Wordle Clone tile */
+.project-card--wordle .project-card__image {
+    background-size: 80% !important;
+    background-position: center !important;
+}
+
+.project-card--wordle {
     background-color: #ffffff;
+}
+
+/* Custom image sizing for Book Search tile */
+.project-card--book-search .project-card__image {
+    background-size: 70% !important;
+    background-position: center !important;
 }
 
 .project-card__image {
