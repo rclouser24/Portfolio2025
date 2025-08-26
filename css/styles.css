@@ -421,6 +421,18 @@ body {
     background-color: #98D8C8;
 }
 
+.project-card--unsuber {
+    background-color: #5B4FC6;
+}
+
+.project-card--tarot {
+    background-color: #261C25;
+}
+
+.project-card--book-search {
+    background-color: #ffffff;
+}
+
 .project-card__image {
     width: 12rem;
     height: 10rem;
@@ -606,6 +618,21 @@ body {
         grid-column: 1 / 2;
     }
     
+    /* Developer tiles responsive positioning */
+    .projects__grid--developer {
+        left: 2rem; /* Match mobile padding */
+        width: calc(100vw - 4rem); /* Full width minus padding */
+        max-width: none; /* Remove max-width constraint on mobile */
+        transform: translateX(100%); /* Reset transform for mobile */
+        grid-template-columns: 1fr; /* Single column layout on mobile */
+        grid-template-rows: auto auto auto auto; /* Stack all tiles vertically */
+    }
+    
+    .projects__grid--developer.active {
+        transform: translateX(0); /* Show in natural position on mobile */
+        margin-top: 4rem; /* Increase spacing below toggle on mobile */
+    }
+    
     .footer__content {
         flex-direction: column;
         gap: 2rem;
@@ -636,6 +663,18 @@ body {
     .title-container {
         height: 35px;
         width: 120px;
+    }
+    
+    /* Developer tiles responsive positioning for small mobile */
+    .projects__grid--developer {
+        left: 1rem; /* Match small mobile padding */
+        width: calc(100vw - 2rem); /* Full width minus padding */
+        grid-template-columns: 1fr; /* Single column layout on small mobile */
+        grid-template-rows: auto auto auto auto; /* Stack all tiles vertically */
+    }
+    
+    .projects__grid--developer.active {
+        margin-top: 3rem; /* Increase spacing below toggle on small mobile */
     }
 } 
 
