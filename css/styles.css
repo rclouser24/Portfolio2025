@@ -461,6 +461,12 @@ body {
     margin-bottom: 1.5rem; /* Add space between image and bottom banner */
 }
 
+/* Make the booksearch tile image bigger */
+.project-card--book-search .project-card__image {
+    width: 24rem; /* Doubled from original 12rem */
+    height: 20rem; /* Doubled from original 10rem */
+}
+
 .project-card__details {
     background-color: rgba(43, 43, 43, 0.62);
     width: 100%;
@@ -488,6 +494,7 @@ body {
 .project-card__category {
     font-size: 0.75rem;
     font-weight: 400;
+    text-align: left; /* Left align to match the title */
 }
 
 .project-card__company {
