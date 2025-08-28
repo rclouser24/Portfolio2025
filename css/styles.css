@@ -330,6 +330,7 @@ body {
     cursor: none; /* Hide default cursor */
     text-decoration: none;
     color: inherit;
+    text-align: center; /* Ensure text content is centered */
 }
 
 /* Custom Cursor */
@@ -457,6 +458,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 0.25rem;
+    margin-bottom: 1.5rem; /* Add space between image and bottom banner */
 }
 
 .project-card__details {
@@ -468,6 +470,7 @@ body {
     justify-content: space-between;
     padding: 1.1875rem 1rem;
     border-radius: 0 0 0.75rem 0.75rem;
+    text-align: center; /* Ensure text content is centered */
 }
 
 .project-card__info {
@@ -677,6 +680,23 @@ body {
     .projects__grid--developer .project-card {
         height: auto; /* Allow height to adjust naturally on mobile */
         min-height: 18rem; /* Set minimum height for mobile */
+        display: flex; /* Ensure flexbox layout is maintained */
+        flex-direction: column; /* Keep vertical layout */
+        align-items: center; /* Center content horizontally */
+        justify-content: space-between; /* Maintain spacing */
+    }
+    
+    /* Ensure project card images stay centered on mobile */
+    .projects__grid .project-card .project-card__image,
+    .projects__grid--designer .project-card .project-card__image,
+    .projects__grid--developer .project-card .project-card__image {
+        width: 12rem; /* Maintain consistent width */
+        height: 10rem; /* Maintain consistent height */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0.25rem;
+        margin: 0 auto 1.5rem auto; /* Center horizontally and add bottom margin */
     }
     
     /* Developer tiles responsive positioning */
@@ -754,6 +774,23 @@ body {
     .projects__grid--developer .project-card {
         height: auto; /* Allow height to adjust naturally on small mobile */
         min-height: 16rem; /* Set minimum height for small mobile */
+        display: flex; /* Ensure flexbox layout is maintained */
+        flex-direction: column; /* Keep vertical layout */
+        align-items: center; /* Center content horizontally */
+        justify-content: space-between; /* Maintain spacing */
+    }
+    
+    /* Ensure project card images stay centered on small mobile for all grids */
+    .projects__grid .project-card .project-card__image,
+    .projects__grid--designer .project-card .project-card__image,
+    .projects__grid--developer .project-card .project-card__image {
+        width: 10rem; /* Slightly smaller width for small mobile */
+        height: 8rem; /* Slightly smaller height for small mobile */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0.25rem;
+        margin: 0 auto 1.25rem auto; /* Center horizontally and add bottom margin (slightly less for small mobile) */
     }
 } 
 
