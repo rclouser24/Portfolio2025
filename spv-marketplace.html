@@ -11,6 +11,14 @@
     <!-- Custom Styles and Scripts -->
     <link href="https://fonts.googleapis.com/css2?family=Finlandica:wght@400;500;600&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is authenticated
+        if (!sessionStorage.getItem('portfolio_authenticated')) {
+            window.location.href = 'password.html';
+        }
+    </script>
 </head>
 <body class="bg-[#fdfaf6] min-h-screen">
     <!-- Custom Cursor -->
