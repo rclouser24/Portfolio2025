@@ -599,34 +599,59 @@ body {
         padding: 4rem 0 4rem 0;
         min-height: 100vh;
     }
-    
+
     .header__name-container {
         flex-direction: column;
         gap: 2rem;
     }
-    
+
     .header__name {
         font-size: 6rem;
         text-align: center;
     }
-    
+
     .header__title-text {
         align-items: center;
     }
-    
+
     .header__social {
         justify-content: center;
     }
-    
+
     .header__profile-image {
         width: 200px;
         height: 236px;
     }
-    
+
     .projects,
     .about {
         padding: 0 2rem;
         overflow: visible; /* Ensure content is visible on mobile */
+    }
+
+    /* Make toggle component wider on mobile */
+    .projects__filter {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .projects__filter-item {
+        font-size: 1.25rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    /* Ensure toggle switch maintains proper size on mobile */
+    .projects__filter-toggle {
+        width: 3rem;
+        height: 1.75rem;
+        flex-shrink: 0;
+        min-width: 3rem;
+    }
+
+    .projects__filter-toggle__slider {
+        width: 1.25rem;
+        height: 1.25rem;
     }
     
     .about {
@@ -739,23 +764,52 @@ body {
         padding: 3rem 0 3rem 0;
         min-height: 100vh;
     }
-    
+
     .header__name {
         font-size: 4rem;
     }
-    
+
     .header__profile-image {
         width: 150px;
         height: 177px;
     }
-    
+
     .header__title {
         font-size: 2rem;
     }
-    
+
     .title-container {
         height: 35px;
         width: 120px;
+    }
+
+    /* Make toggle component wider on small mobile */
+    .projects__filter {
+        width: 100%;
+        max-width: 100%;
+        gap: 1rem;
+    }
+
+    .projects__filter-item {
+        font-size: 1rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    /* Ensure toggle switch maintains proper size on small mobile */
+    .projects__filter-toggle {
+        width: 3rem;
+        height: 1.75rem;
+        flex-shrink: 0;
+        min-width: 3rem;
+        min-height: 1.75rem;
+    }
+
+    .projects__filter-toggle__slider {
+        width: 1.25rem;
+        height: 1.25rem;
+        min-width: 1.25rem;
+        min-height: 1.25rem;
     }
     
     /* Developer tiles responsive positioning for small mobile */
