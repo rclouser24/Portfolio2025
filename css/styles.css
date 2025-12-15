@@ -635,10 +635,14 @@ body {
         text-align: center;
     }
 
+    .header {
+        padding: 4rem 0 0 0;
+        margin-bottom: 84px;
+    }
+
     .projects {
         padding: 0 2rem;
         overflow: visible; /* Ensure content is visible on mobile */
-        margin-top: -30vh; /* Bring content 30% higher */
     }
 
     .about {
@@ -807,8 +811,9 @@ body {
         text-align: center;
     }
 
-    .projects {
-        margin-top: -30vh; /* Bring content 30% higher */
+    .header {
+        padding: 3rem 0 0 0;
+        margin-bottom: 84px;
     }
 
     /* Make toggle component wider on small mobile */
