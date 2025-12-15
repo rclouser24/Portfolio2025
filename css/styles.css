@@ -623,6 +623,15 @@ body {
         height: 236px;
     }
 
+    .title-container {
+        height: 35px;
+        width: 250px;
+    }
+
+    .title-slide {
+        font-size: 1.75rem;
+    }
+
     .projects,
     .about {
         padding: 0 2rem;
@@ -779,8 +788,12 @@ body {
     }
 
     .title-container {
-        height: 35px;
-        width: 120px;
+        height: 30px;
+        width: 200px;
+    }
+
+    .title-slide {
+        font-size: 1.5rem;
     }
 
     /* Make toggle component wider on small mobile */
