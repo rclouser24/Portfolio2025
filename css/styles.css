@@ -626,13 +626,21 @@ body {
     .title-container {
         height: 35px;
         width: 250px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .title-slide {
         font-size: 1.75rem;
+        text-align: center;
     }
 
-    .projects,
+    .projects {
+        padding: 0 2rem;
+        overflow: visible; /* Ensure content is visible on mobile */
+        margin-top: -30vh; /* Bring content 30% higher */
+    }
+
     .about {
         padding: 0 2rem;
         overflow: visible; /* Ensure content is visible on mobile */
@@ -790,10 +798,17 @@ body {
     .title-container {
         height: 30px;
         width: 200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .title-slide {
         font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .projects {
+        margin-top: -30vh; /* Bring content 30% higher */
     }
 
     /* Make toggle component wider on small mobile */
