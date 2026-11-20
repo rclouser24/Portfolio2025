@@ -423,32 +423,29 @@ body {
     background-color: #98D8C8;
 }
 
+.project-card--golfy {
+    background-color: #7B973B;
+}
+
+.project-card--keep {
+    background-color: #8B6A5D;
+}
+
+.project-card--blockfuse {
+    background-color: #0E1028;
+}
+
+/* App icons: show the whole icon instead of cropping it */
+.project-card--golfy .project-card__image,
+.project-card--keep .project-card__image,
+.project-card--blockfuse .project-card__image {
+    width: 10rem;
+    background-size: contain;
+    border-radius: 2rem;
+}
+
 .project-card--unsuber {
     background-color: #5B4FC6;
-}
-
-.project-card--tarot {
-    background-color: #261C25;
-}
-
-.project-card--book-search {
-    background-color: #2F2F2F;
-}
-
-/* Custom image sizing for Wordle Clone tile */
-.project-card--wordle .project-card__image {
-    background-size: 80% !important;
-    background-position: center !important;
-}
-
-.project-card--wordle {
-    background-color: #ffffff;
-}
-
-/* Custom image sizing for Book Search tile */
-.project-card--book-search .project-card__image {
-    background-size: 70% !important;
-    background-position: center !important;
 }
 
 .project-card__image {
@@ -459,12 +456,6 @@ body {
     background-repeat: no-repeat;
     border-radius: 0.25rem;
     margin-bottom: 1.5rem; /* Add space between image and bottom banner */
-}
-
-/* Make the booksearch tile image bigger */
-.project-card--book-search .project-card__image {
-    width: 24rem; /* Doubled from original 12rem */
-    height: 20rem; /* Doubled from original 10rem */
 }
 
 .project-card__details {
